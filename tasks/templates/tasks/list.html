@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Задачи на день{% endblock %}
+
+{% block extra_head %}
+	<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+
+{% block main_content %}
+	<h2>Текущие задачи</h2>
+	<p><i class="far fa-download"></i>&nbsp;<a href="{% url "tasks:export" %}">экспорт</a></p>
+	<ul class="list-inline">
+		{% for tag in tags %}
+			<li class="list-inline-item">
+				<span class="badge badge-info">{{ tag }}</span>
+			</li>
+		{% endfor %}
+	</ul>
+	<ul id="todo-list">
+		{% for task in tasks %}
+			{% if task.is_completed %}
+				<li class="completed">
+					<input class='checkbox' data-uid={{ task.id }} type='checkbox'
+					       disabled='disabled' checked='checked'/>
+					{% else %}
+				<li>
+				<input class='checkbox' data-uid={{ task.id }} type='checkbox'/>
+			{% endif %}
+		{% if task.priority == task.PRIORITY_HIGH %}
+			<span class="badge badge-pill badge-danger">&nbsp;</span>
+		{% elif task.priority == task.PRIORITY_MEDIUM %}
+			<span class="badge badge-pill badge-secondary">&nbsp;</span>
+		{% elif task.priority == task.PRIORITY_LOW %}
+			<span class="badge badge-pill badge-success">&nbsp;</span>
+		{% endif %}
+		<a href={% url "tasks:details" task.id %}>{{ task }}</a>
+		<a class="remove" href={% url "tasks:delete" task.id %}>X</a>
+		<hr/>
+		</li>
+		{% endfor %}
+	</ul>
+	<dev row>
+		<a class="" href={% url "tasks:create" %}>Создать задачу</a>
+	</dev>
+{% endblock %}

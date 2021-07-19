@@ -1,0 +1,62 @@
+.container {
+    margin: 0 auto;
+    min-width: 500px;
+    width: 45%;
+    text-align: left;
+    color: #3b3b3b;
+    font-weight: bold;
+}
+
+form.tasks-create {
+    outline: 0;
+    height: 36px;
+    margin-top: 5%;
+
+}
+
+form.tasks-create > input[type="text"] {
+    outline: 0;
+    width: 55%;
+    height: 32px;
+    border: 3px solid #3b3b3b;
+    font-size: 18px;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+.add {
+    float: left;
+    width: 34%;
+    height: 34px;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    background-color: #6f6f6f;
+}
+
+ul {
+    padding: 0;
+    text-align: left;
+    list-style: none;
+}
+
+hr {
+    border-bottom: 0;
+    margin: 15px 0;
+}
+
+input[type="checkbox"] {
+    width: 30px;
+}
+
+.remove {
+    float: right;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.completed {
+    text-decoration: line-through;
+}
